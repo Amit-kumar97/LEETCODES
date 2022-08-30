@@ -2,9 +2,6 @@ class Solution {
     public int coinChange(int[] c, int a) {
         
         // problem of optimization - it may be maximiz  ed or minimized
-        if(a==0)
-            return 0;
-        
         int max = a+1;
         int[] dp = new int[max];
         Arrays.fill(dp, max);    // ans req. is maximum
