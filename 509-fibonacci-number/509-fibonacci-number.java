@@ -1,25 +1,23 @@
 class Solution {
     public int fib(int n) {
         
-        if(n==0)
-            return 0;
+        if(n<=1)
+            return n;
         
-        return fibb(new int[n+1], n);
-    }
-    
-    private int fibb(int[] memo, int n)
-    {
-        if(memo[n]==0)
+        if(n==2)
+            return 1;
+        
+        int current = 0;
+        int prev1 = 1;
+        int prev2 = 1;
+        
+        for(int i=3; i<=n; i++)
         {
-            if(n<2)
-                memo[n] = n;
-            else
-            {
-                int left = fibb(memo, n-1);
-                int right = fibb(memo, n-2);
-                memo[n] = left+right;
-            }
+            current = prev1+prev2;
+            prev1 = prev2;
+            prev2 = current;
         }
-        return memo[n];
+        
+        return current;
     }
 }
