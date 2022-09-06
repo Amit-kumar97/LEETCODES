@@ -1,10 +1,6 @@
 class Solution {
     public boolean isPowerOfTwo(int n) {
-        
-        if(n==0)
-            return false;
-        long x = (long) n;
-        return (x & x-1)== 0;
+        return IntStream.rangeClosed(0,31).anyMatch(a->Math.pow(2,a)==n);
     }
     
 }
