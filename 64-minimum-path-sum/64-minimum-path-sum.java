@@ -9,10 +9,14 @@ class Solution {
         
         int[][] dp = new int[m][n];
         dp[0][0] =grid[0][0];
+        
+        // for dp column
         for(int i=1; i<n;i++)
         {
             dp[0][i] = grid[0][i] + dp[0][i-1];
         }
+        
+        // for dp rows
         for(int i=1; i<m; i++)
         {
             dp[i][0] =grid[i][0] + dp[i-1][0];
