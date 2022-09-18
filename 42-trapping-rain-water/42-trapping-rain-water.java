@@ -5,23 +5,25 @@ class Solution {
             return 0;
         int water = 0;
         
-        int[] left = new int[n];
-        left[0] = h[0];
-        int[] right = new int[n];
-        right[n-1] = h[n-1];
+        int left=0;
+        int right=n-1;
+        int lmax = 0;
+        int rmax = 0;
         
-        for(int i=1; i<n; i++)
+        while(left<=right)
         {
-            left[i] = Math.max(h[i], left[i-1]);
-        }
-        for(int i=n-2; i>=0; i--)
-        {
-            right[i] = Math.max(h[i], right[i+1]);
-        }
-        for(int i=0; i<n; i++)
-        {
-            int waterStored = Math.min(left[i], right[i])-h[i];
-            water += waterStored;
+            if(rmax<=lmax)
+            {
+                water += Math.max(0,rmax-h[right]);
+                rmax = Math.max(rmax, h[right]);
+                right--;
+            }
+            else
+            {
+                water += Math.max(0,lmax-h[left]);
+                lmax = Math.max(lmax,h[left]);
+                left++;
+            }
         }
         return water;
     }
