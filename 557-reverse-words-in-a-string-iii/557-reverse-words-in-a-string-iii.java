@@ -3,15 +3,14 @@ class Solution {
         
         String[] ar = s.split(" ");
         String ans = "";
-        for(int i=0; i<ar.length; i++)
-        {
-            StringBuilder str = new StringBuilder();
+        StringBuilder str = new StringBuilder();
+        for(int i=0; i<ar.length; i++){
             str.append(ar[i]);
-            str.reverse();
             if(i==ar.length-1)
-                ans+=str.toString();
+                ans+=str.reverse().toString();
             else
-                ans += str.toString()+" ";     
+                ans += str.reverse().toString()+" ";  
+            str.setLength(0);
         }
         return ans;
     }
