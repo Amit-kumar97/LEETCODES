@@ -1,17 +1,12 @@
 class Solution {
     public int minDifficulty(int[] jobDiff, int d) {
+        
         int n = jobDiff.length;
+        // Base case
         if(d>n)
             return -1;
-        
-        int minDiff = 0;
-        if(d==n) {
-            for(int i=0; i<d; i++){
-                minDiff += jobDiff[i];
-            }
-            return minDiff;
-        }
 
+        // Creating a DP
         int[][] minDifficulty = new int[d][n];
         for (int i=1; i<d; i++) {
             Arrays.fill(minDifficulty[i], Integer.MAX_VALUE);
