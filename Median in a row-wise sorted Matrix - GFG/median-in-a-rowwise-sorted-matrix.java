@@ -47,6 +47,6 @@ class Solution {
             }
         }
         Arrays.sort(list);
-        return list[(1+R*C)/2 -1];
+        return list[(list.length-1)/2 ];
     }
 }
