@@ -46,30 +46,23 @@ class Solution
         }
         for(int i=0; i<V; i++){
             if(color[i]==-1){
-                if(checkBipertite(i, V, color, adj)==false)
+                if(dfs(i, 0, color, adj)==false)
                     return false;
             }
         }
         return true;
     }
     
-    private boolean checkBipertite(int start, int V, int[] color, ArrayList<ArrayList<Integer>>adj){
-        Queue<Integer> q = new LinkedList<Integer>();
-        q.add(start);
-        color[start] = 0;
+    private boolean dfs(int node, int col, int[] color, ArrayList<ArrayList<Integer>>adj){
+        color[node] = col;
         
-        while(!q.isEmpty()){
-            int node = q.peek();
-            q.remove();
-            
-            for(int it:adj.get(node)){
-                if(color[it]==-1){
-                    color[it] = 1-color[node];
-                    q.add(it);
-                }
-                else if(color[it]==color[node]){
+        for(int it:adj.get(node)){
+            if(color[it]==-1){
+                if(dfs(it, 1-col, color, adj)==false)
                     return false;
-                }
+            }
+            else if(color[it]==color[node]){
+                return false;
             }
         }
         return true;
